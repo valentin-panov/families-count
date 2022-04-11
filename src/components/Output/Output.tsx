@@ -1,46 +1,37 @@
-import React, { memo } from 'react'
+import React, {memo} from 'react'
 import cn from 'clsx'
-import { shallowEqual, useSelector } from 'react-redux'
-import { CircularProgress } from '@mui/material'
 import s from './Output.module.scss'
-import { RootState } from '../../store'
-import ZeroFound from '../ZeroFound/ZeroFound'
-import Error404 from '../Error404/Error404'
-import SideFilters from './SideFilters/SideFilters'
-import TopFilters from './TopFilters/TopFilters'
-import { TicketList } from './TicketList'
+import SideBar from "./SideBar/SideBar";
+import TopBar from "./TopBar/TopBar";
+import {shallowEqual, useSelector} from "react-redux";
+import {RootState} from "../../store";
 
 export type Props = {
-  className?: string
+    className?: string
 }
 
-export const Output = memo<Props>(({ className }) => {
-  const ticketsStore = useSelector(
-    (store: RootState) => store.tickets,
-    shallowEqual
-  )
-  const { status, tickets } = ticketsStore
+export const Output = memo<Props>(({className}) => {
+    const {families} = useSelector(
+        (store: RootState) => store.people,
+        shallowEqual
+    )
 
-  return (
-    <>
-      <div className={cn(s.root, className)}>
-        <div className={s.sideFilters}>
-          <SideFilters />
-        </div>
-        <div className={s.topFilters}>
-          <TopFilters />
-        </div>
-        <div className={s.tickets}>
-          {status === 'pending' && <CircularProgress />}
-          {status === 'success' && tickets.length > 0 && (
-            <TicketList ticketsStore={tickets} />
-          )}
-          {status === 'success' && tickets.length === 0 && <ZeroFound />}
-          {status === 'error' && <Error404 />}
-        </div>
-      </div>
-    </>
-  )
+    return (
+        <>
+            <div className={cn(s.root, className)}>
+                <div className={s.sideFilters}>
+                    <SideBar/>
+                </div>
+                <div className={s.topFilters}>
+                    <TopBar/>
+                </div>
+                <div className={s.tickets}>
+                    {families.length > 0 && families.map(el => <div key={el[0].id}>FAMILY : {el.map(person => <div
+                        key={person.id}>PERSON ID {person.id}</div>)}</div>)}
+                </div>
+            </div>
+        </>
+    )
 })
 
 Output.displayName = 'Output'

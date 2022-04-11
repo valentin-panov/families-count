@@ -1,28 +1,28 @@
-import React, { memo } from 'react'
+import React, {memo} from 'react'
 import cn from 'clsx'
-import { useDispatch } from 'react-redux'
 import s from './Header.module.scss'
 import plane from '../../../src/img/btnPlane.png'
-import { ticketsFetch } from '../../reducers/tickets'
+import {useDispatch} from "react-redux";
+import {acquireFamilies} from "../../reducers/people";
 
 export type Props = {
-  className?: string
+    className?: string
 }
 
-export const Header = memo<Props>(({ className }) => {
-  const dispatch = useDispatch()
 
-  const getTicket = () => {
-    dispatch(ticketsFetch())
-  }
+export const Header = memo<Props>(({className}) => {
+    const dispatch = useDispatch()
 
-  return (
-    <header className={cn(s.root, className)}>
-      <button type={'button'} onClick={getTicket} className={s.btn}>
-        <img src={plane} alt="plane" className={s.btn_img} />
-      </button>
-    </header>
-  )
+    const activate = () => {
+        dispatch(acquireFamilies())
+    }
+
+    return (
+        <header className={cn(s.root, className)}>
+            <button type={'button'} onClick={activate} className={s.btn} style={{backgroundImage: `url(${plane})`}}>
+            </button>
+        </header>
+    )
 })
 
 Header.displayName = 'Header'

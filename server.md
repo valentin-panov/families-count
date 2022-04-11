@@ -17,14 +17,14 @@ Response: `{"token":"4niyd"}`
 
 ## Получение пачки билетов
 
-Отправляй GET-запросы на `https://front-test.beta.aviasales.ru/tickets` и передай token полученный из запроса выше
+Отправляй GET-запросы на `https://front-test.beta.aviasales.ru/families` и передай token полученный из запроса выше
 GET-параметром.
 
 Пример:
 
-Request: `https://front-test.beta.aviasales.ru/tickets?token=4niyd`
+Request: `https://front-test.beta.aviasales.ru/families?token=4niyd`
 
-Response: `{tickets: [], stop: false}`
+Response: `{families: [], stop: false}`
 
 ## Обработка завершения поиска
 
@@ -32,13 +32,13 @@ Response: `{tickets: [], stop: false}`
 
 Пример:
 
-Request: `https://front-test.beta.aviasales.ru/tickets?token=4niyd`
+Request: `https://front-test.beta.aviasales.ru/families?token=4niyd`
 
-Response: `{tickets: [], stop: true}`
+Response: `{families: [], stop: true}`
 
 ## Структура билета
 
-В списке `tickets` будут лежать билеты следующей структуры:
+В списке `families` будут лежать билеты следующей структуры:
 
 ```typescript
 interface Ticket {
