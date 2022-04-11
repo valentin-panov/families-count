@@ -1,0 +1,39 @@
+@import 'src/styles/common';
+
+.root {
+  display: grid;
+  align-items: start;
+  width: 750px;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 15px;
+  justify-items: stretch;
+  grid-template-columns: 230px 500px;
+  grid-template-rows: 50px 1fr;
+  grid-gap: 20px;
+  grid-template-areas:
+          'sideFilters topFilters'
+          'sideFilters tickets';
+
+  .sideFilters {
+    border-radius: 5px;
+    background: $whiteBg;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    grid-area: sideFilters;
+  }
+
+  .topFilters {
+    border-radius: 5px;
+    background: $whiteBg;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    grid-area: topFilters;
+  }
+
+  .tickets {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    grid-area: tickets;
+  }
+}

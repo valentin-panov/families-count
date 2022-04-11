@@ -1,0 +1,52 @@
+@import 'src/styles/common';
+
+.root {
+  font-weight: 600;
+  font-style: normal;
+  display: grid;
+  align-items: center;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: start;
+  grid-template-areas:
+    'route durationTitle switchesCount'
+    'date duration switchesList';
+}
+
+.upperRow {
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: $secondaryContent;
+}
+
+.lowerRow {
+  font-size: 14px;
+  line-height: 21px;
+  color: $primaryContent;
+}
+
+.route {
+  grid-area: route;
+}
+
+.durationTitle {
+  grid-area: durationTitle;
+}
+
+.switchesCount {
+  grid-area: switchesCount;
+}
+
+.date {
+  grid-area: date;
+}
+
+.duration {
+  grid-area: duration;
+}
+
+.switchesList {
+  grid-area: switchesList;
+}
